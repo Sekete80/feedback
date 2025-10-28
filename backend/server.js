@@ -5,6 +5,7 @@ dotenv.config();
 const sequelize = require('./db');
 const feedbackRoutes = require('./routes/feedbackRoutes');
 const Feedback = require('./models/Feedback');
+const path = require('path'); // <- Add this
 
 const app = express();
 app.use(cors());
@@ -29,3 +30,12 @@ async function start() {
 }
 
 start();
+
+// -------------------------------
+// Serve React frontend in production
+// -------------------------------
+app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+});

@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.72b5c5c6.css","mappings":"AAAA,KAAsB,kBAAmB,CAAlC,YAAoC,CAC3C,WAAa,eAAkB","sources":["index.css"],"sourcesContent":["body { padding: 20px; background: #f8f9fa; }\n.container { max-width: 900px; }\n"],"names":[],"sourceRoot":""}
