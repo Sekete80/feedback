@@ -6,12 +6,14 @@ function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
   useEffect(() => {
     async function load() {
       setError(null);
       setLoading(true);
       try {
-        const res = await axios.get('http://localhost:5000/api/feedback');
+        const res = await axios.get(`${API_URL}/api/feedback`);
         setFeedbacks(res.data);
       } catch (err) {
         setError(err.response?.data?.error || err.message);
@@ -20,7 +22,7 @@ function Dashboard() {
       }
     }
     load();
-  }, []);
+  }, [API_URL]);
 
   return (
     <div className="card shadow-sm">
@@ -41,7 +43,9 @@ function Dashboard() {
               </thead>
               <tbody>
                 {feedbacks.length === 0 && (
-                  <tr><td colSpan="4" className="text-center">No feedback yet</td></tr>
+                  <tr>
+                    <td colSpan="4" className="text-center">No feedback yet</td>
+                  </tr>
                 )}
                 {feedbacks.map(f => (
                   <tr key={f.id}>

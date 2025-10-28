@@ -11,6 +11,8 @@ function FeedbackForm({ onFeedbackSubmitted }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
   const handleChange = e => {
     const { name, value } = e.target;
     setForm(f => ({ ...f, [name]: value }));
@@ -21,7 +23,7 @@ function FeedbackForm({ onFeedbackSubmitted }) {
     setError(null);
     setLoading(true);
     try {
-      await axios.post('http://localhost:5000/api/feedback', {
+      await axios.post(`${API_URL}/api/feedback`, {
         ...form,
         rating: Number(form.rating)
       });
@@ -42,20 +44,42 @@ function FeedbackForm({ onFeedbackSubmitted }) {
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label className="form-label">Student Name</label>
-            <input required name="studentName" className="form-control" value={form.studentName} onChange={handleChange} />
+            <input
+              required
+              name="studentName"
+              className="form-control"
+              value={form.studentName}
+              onChange={handleChange}
+            />
           </div>
           <div className="mb-3">
             <label className="form-label">Course Code</label>
-            <input required name="courseCode" className="form-control" value={form.courseCode} onChange={handleChange} />
+            <input
+              required
+              name="courseCode"
+              className="form-control"
+              value={form.courseCode}
+              onChange={handleChange}
+            />
           </div>
           <div className="mb-3">
             <label className="form-label">Comments</label>
-            <textarea name="comments" className="form-control" value={form.comments} onChange={handleChange} />
+            <textarea
+              name="comments"
+              className="form-control"
+              value={form.comments}
+              onChange={handleChange}
+            />
           </div>
           <div className="mb-3">
             <label className="form-label">Rating</label>
-            <select name="rating" className="form-select" value={form.rating} onChange={handleChange}>
-              {[1,2,3,4,5].map(r => <option key={r} value={r}>{r}</option>)}
+            <select
+              name="rating"
+              className="form-select"
+              value={form.rating}
+              onChange={handleChange}
+            >
+              {[1, 2, 3, 4, 5].map(r => <option key={r} value={r}>{r}</option>)}
             </select>
           </div>
           <button className="btn btn-primary" type="submit" disabled={loading}>
