@@ -1,21 +1,29 @@
-import React, { useState } from 'react';
-import FeedbackForm from './components/FeedbackForm';
-import Dashboard from './components/Dashboard';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import FeedbackPage from "./pages/FeedbackPage";
+import ReportsPage from "./pages/ReportsPage";
+import "./index.css";
 
 function App() {
-  const [refreshKey, setRefreshKey] = useState(0);
   return (
-    <div className="container">
-      <h1 className="my-4">Student Feedback App</h1>
-      <div className="row">
-        <div className="col-md-5">
-          <FeedbackForm onFeedbackSubmitted={() => setRefreshKey(k => k + 1)} />
+    <Router>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div className="container">
+          <Link className="navbar-brand" to="/">Feedback System</Link>
+          <div className="navbar-nav">
+            <Link className="nav-link" to="/">Submit Feedback</Link>
+            <Link className="nav-link" to="/reports">View Reports</Link>
+          </div>
         </div>
-        <div className="col-md-7">
-          <Dashboard key={refreshKey} />
-        </div>
+      </nav>
+
+      <div className="container mt-4">
+        <Routes>
+          <Route path="/" element={<FeedbackPage />} />
+          <Route path="/reports" element={<ReportsPage />} />
+        </Routes>
       </div>
-    </div>
+    </Router>
   );
 }
 

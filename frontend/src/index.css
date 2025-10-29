@@ -1,2 +1,42 @@
-body { padding: 20px; background: #f8f9fa; }
-.container { max-width: 900px; }
+body {
+  background-color: #0b1d39; /* Deep navy blue */
+  color: #000; /* Default text color inside white cards */
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.mb-4 {
+    color:#ffffff
+}
+
+.card {
+  background-color: #ffffff; /* clean white cards */
+  color: #000000; /* dark text */
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 25px rgba(255, 255, 255, 0.2);
+}
+
+h5.card-title {
+  color: #0b1d39;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background-color: #0b1d39;
+  border-color: #0b1d39;
+}
+
+.btn-primary:hover {
+  background-color: #163c74;
+  border-color: #163c74;
+}
