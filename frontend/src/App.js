@@ -23,6 +23,7 @@ function App() {
           <Route path="/reports" element={<ReportsPage />} />
         </Routes>
       </div>
+      <footer>&copy;Daemon@280 2025</footer>
     </Router>
   );
 }
